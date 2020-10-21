@@ -1,6 +1,19 @@
 #include<iostream>
-#include<string.h>
+#include<cstring>
 using namespace std;
+
+class Exception{
+    char *s;
+    public:
+    Exception(char msg[]){
+        s=new char[strlen(msg)+1];
+        strcpy(s,msg);
+    }
+    friend ostream& operator<<(ostream &ob, Exception E){
+        ob<<E.s;
+        return ob;
+    }
+};
 
 template <class T>class Array{
     T *a;
@@ -26,8 +39,10 @@ template <class T> Array<T>::Array(int n){
 template
 <class T>
 void Array<T>::insert(T ob,int index){
-    if(size==length)
-        cout<<"Array is full"<<endl;
+    if(size==length){
+        char meassage[]="Array is full";
+        throw Exception(meassage);
+    }
     else if (index<0||index>size)
         cout<<"Invalid index"<<endl;
     else
@@ -50,7 +65,8 @@ int main(){
         cout<<"Array is empty"<<endl;
     else
     {
-        cout<<"Array is not empty"<<endl;
+        char acknowldgement[]="Array is not empty";
+        throw Exception(acknowldgement);
     }
     
     return 0;
