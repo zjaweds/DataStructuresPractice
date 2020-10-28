@@ -40,9 +40,7 @@ template<class T> bool Array<T>::isEmpty(){
     if(size==0)
         return true;
     else
-    {
         return false;
-    }
 }
 template<class T>int Array<T>::getSize(){
     return size;
@@ -57,11 +55,17 @@ template<class T>void Array<T>::insert(T t, int index){
     x[index]=t;
     size++;
 }
+template<class T>void Array<T>::display(){
+    cout<<x;        
+}
 class Person{
     char *name;
     int age;
     char *sex;
     public:
+    Person(){
+        age=0;
+    }
     Person(char msg[],int a,char s[]){
         name=new char[strlen(msg)+1];
         strcpy(name,msg);
@@ -76,9 +80,10 @@ int main(){
     student.insert("is",2);
     //student.insert("Dell",6);
     Array<Person>p(3);
+    Person x("Student",34,"F"),r("Alpha",32,"NA");
+    p.insert(x,1);
     Person q("John",65,"M");
-
     p.insert(q,0);
-    // p.insert(r,1);
+    p.insert(r,2);
     return 0;
 }
