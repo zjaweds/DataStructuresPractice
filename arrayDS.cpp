@@ -54,6 +54,7 @@ template<class T>void Array<T>::insert(T t, int index){
         x[i+1]=x[i];
     x[index]=t;
     size++;
+    cout<<size<<endl;
 }
 template<class T>void Array<T>::display(){
     cout<<x;        
@@ -79,11 +80,15 @@ int main(){
     student.insert("Name",1);
     student.insert("is",2);
     //student.insert("Dell",6);
+    cout<<student.getSize()<<endl;
     Array<Person>p(3);
+    cout<<p.getSize()<<endl;
     Person x("Student",34,"F"),r("Alpha",32,"NA");
     p.insert(x,1);
+    //cout<<p.getSize();
     Person q("John",65,"M");
     p.insert(q,0);
     p.insert(r,2);
+    cout<<p.getSize()<<endl;
     return 0;
 }
