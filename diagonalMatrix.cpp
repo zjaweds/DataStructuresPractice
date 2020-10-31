@@ -47,11 +47,23 @@ void DiagonalMatrix::print(){
 		cout<<"\n";
 	}
 }
-
+DiagonalMatrix DiagonalMatrix::mul(DiagonalMatrix B){
+	if(n != B.n) throw Exception("Multiplication failed! Order of both diagonal matrix must be same");
+	DiagonalMatrix C(n);
+	for(int i=0; i<n; i++)
+		C.a[i] = a[i] * B.a[i];
+	return C;
+}
 int main(){
 	DiagonalMatrix A(3);
 	A.read();
-	cout<<"Matrix A";
+	cout<<"Matrix A"<<endl;
 	A.print();
+    DiagonalMatrix B=A;
+    cout<<"Matrix B"<<endl;
+    B.print();
+    DiagonalMatrix C=A.mul(B);
+    cout<<"Product of Matrices"<<endl;
+    C.print();
 	return 0;
 }
