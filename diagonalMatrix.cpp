@@ -54,6 +54,12 @@ DiagonalMatrix DiagonalMatrix::mul(DiagonalMatrix B){
 		C.a[i] = a[i] * B.a[i];
 	return C;
 }
+float DiagonalMatrix::det(){
+	float d=1.0;
+	for(int i = 0; i<n; i++)
+		d = d * a[i];
+	return d;
+}
 int main(){
 	DiagonalMatrix A(3);
 	A.read();
@@ -65,5 +71,6 @@ int main(){
     DiagonalMatrix C=A.mul(B);
     cout<<"Product of Matrices"<<endl;
     C.print();
+    cout<<C.det();
 	return 0;
 }
