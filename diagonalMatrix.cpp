@@ -60,6 +60,17 @@ float DiagonalMatrix::det(){
 		d = d * a[i];
 	return d;
 }
+DiagonalMatrix DiagonalMatrix:: add(DiagonalMatrix B){
+    if(n != B.n) throw Exception("Multiplication failed! Order of both diagonal matrix must be same");
+    DiagonalMatrix C(n);
+    for(int i=0; i<n; i++){
+		for(int j=0; j<n; j++){
+			if(i == j)
+				C.a[i]+=B.a[i];
+        }
+	}
+	return C;
+}
 int main(){
 	DiagonalMatrix A(3);
 	A.read();
@@ -71,6 +82,8 @@ int main(){
     DiagonalMatrix C=A.mul(B);
     cout<<"Product of Matrices"<<endl;
     C.print();
-    cout<<C.det();
+    C=A.add(B);
+    C.print();
+    cout<<endl<<C.det();
 	return 0;
 }
