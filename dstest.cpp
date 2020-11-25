@@ -13,7 +13,6 @@ int main()
 		char ch;
 		while (!new_file.eof()) 
 		{   
-			
 			string s;
 			int dots=0; 
             while(dots<1){
@@ -34,4 +33,3 @@ int main()
 	new_file.close();    
 	return 0;
 }
-
