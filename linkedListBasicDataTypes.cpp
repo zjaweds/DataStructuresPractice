@@ -27,15 +27,24 @@ template<class T>int LinkedList<T>::sizeOfLinkedList(){
     }
     return i;
 }
-
 template<class T>LinkedList<T>* LinkedList<T>::deleteNode(T x){
-    Node<T> *cur;
+    Node<T> *cur,*pre;
     cur=this->first;
+    pre=first;
+    // cout<<"\n"<<cur->linkedData<<" : "<<first->linkedData<<"\n"<<endl;
     for(int i=0;i<this->sizeOfLinkedList();i++){
-        if(cur->nextNode->linkedData==x){
-            cur->nextNode=cur->nextNode->nextNode;
-            break;
-        }
+        if(cur->linkedData==x){
+                if(cur==first){
+                    first=cur->nextNode;
+                    break;
+                }
+                cur=cur->nextNode;
+                pre->nextNode=cur;
+                // cout<<"\n"<<i<<"\n"<<endl;
+                break;    
+            }
+        pre=cur;
+        cur=cur->nextNode;
     }
     return this;
 }
@@ -53,8 +62,8 @@ template<class T>LinkedList<T>:: LinkedList(){
 }
 template<class T>void LinkedList<T>::createLinkedList(int n){
     Node<T> *current;
-    for(int i=0;i<n;i++){
-        if(i==0){
+    for(int i=1;i<=n;i++){
+        if(i==1){
             current=first=new Node<T>;
         }
         else
@@ -74,13 +83,13 @@ int main(){
     int n;
     cout<<"What: "<<endl;
     LinkedList<int> listOfInts;
-    listOfInts.createLinkedList(4);
+    listOfInts.createLinkedList(2);
     listOfInts.displayLinkedList();
     cout<<"Size of the Linked List: "<<listOfInts.sizeOfLinkedList()<<endl;
     cout<<"Enter the number to be deleted: ";
     cin>>n;
     listOfInts.deleteNode(n);
-    cout<<"Size of the Linked List after deletion: "<<listOfInts.sizeOfLinkedList()<<endl;    
     listOfInts.displayLinkedList();
+    cout<<"Size of the Linked List after deletion: "<<listOfInts.sizeOfLinkedList()<<endl<<endl;    
     return 0;
 }
