@@ -17,6 +17,12 @@ template<class typeT>class LinkedListforStack{
     int sizeOfStack();
     bool isFull();
 };
+template<class typeT>typeT LinkedListforStack<typeT>::peek(int index){
+    for(int i=1;i<index;i++){
+        tos=tos->nextNode;
+    }
+    return tos->linkedData;
+}
 template<class typeT>LinkedListforStack<typeT>::LinkedListforStack(){
     tos=NULL;
 }
@@ -46,9 +52,9 @@ int main(){
     stackOfChars.push('C');
     stackOfChars.push('B');
     cout<<"\n<-------------------Execution Successful------------------>\n"<<endl;
-    cout<<stackOfInts.pop()<<"\t"<<stackOfChars.pop()<<endl;
-    cout<<stackOfInts.pop()<<"\t"<<stackOfChars.pop()<<endl;
-    cout<<stackOfInts.pop()<<"\t"<<stackOfChars.pop()<<endl;
+    // cout<<stackOfInts.pop()<<"\t"<<stackOfChars.pop()<<endl;
+    // cout<<stackOfInts.pop()<<"\t"<<stackOfChars.pop()<<endl;
+    cout<<stackOfInts.pop()<<"\t"<<stackOfChars.pop()<<"\t"<<stackOfChars.peek(0)<<endl;
     cout<<"\n<-------------------Execution Successful------------------>\n"<<endl;
     return 0;
 }
