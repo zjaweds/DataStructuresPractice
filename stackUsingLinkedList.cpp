@@ -1,5 +1,5 @@
 #include<iostream>
-#define stackSize 100
+#define stackSize 100 //Not used in this program
 using namespace std;
 template<class typeT>class Node{
     public:
@@ -12,7 +12,7 @@ template<class typeT>class LinkedListforStack{
     LinkedListforStack();
     void push(typeT x);
     typeT pop();
-    typeT peek(int index);
+    typeT peek(int index);  //Returns indexth element from the tos
     bool isEmpty();
     int sizeOfStack();
     bool isFull();
